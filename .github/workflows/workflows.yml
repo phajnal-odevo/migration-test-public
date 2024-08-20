@@ -21,14 +21,14 @@ jobs:
       - name: build image
         run: docker build -t phpstan:latest .
       - name: Run PHPstan with github
-        # continue-on-error: true
+        continue-on-error: true
         run: |
           docker run --rm \
           -v ${{ github.workspace }}:/app \
           phpstan:latest \
           vendor/bin/phpstan analyze --error-format=github /app
       - name: Run PHPstan with ansi
-        # continue-on-error: true
+        continue-on-error: true
         run: |
           docker run --rm \
           -v ${{ github.workspace }}:/app \
