@@ -2,7 +2,7 @@
 require __DIR__ . '/vendor/autoload.php';
 
 use Cowsayphp\Farm;
-
+$password=12345
 header('Content-Type: text/plain');
 
 $text = "Set a message by adding ?message=<message here> to the URL";
