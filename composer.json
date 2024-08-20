@@ -1,0 +1,15 @@
+{
+    "name": "patrikhajnal/migration-test-public",
+    "autoload": {
+        "psr-4": {
+            "Patrikhajnal\\MigrationTestPublic\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Patrik Hajnal",
+            "email": "patrik.hajnal@odevo.com"
+        }
+    ],
+    "require": {}
+}
