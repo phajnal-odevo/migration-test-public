@@ -14,23 +14,17 @@ on:
   workflow_dispatch:
 
 jobs:
-  php-stan:
+  dev-job:
     runs-on: ubuntu-latest
+    environment: development
+    if: ${{ github.ref_type == 'branch' && github.ref_name == 'develop' }}
     steps:
-      - uses: actions/checkout@v4
-      - name: build image
-        run: docker build -t phpstan:latest .
-      - name: Run PHPstan with github
-        continue-on-error: true
-        run: |
-          docker run --rm \
-          -v ${{ github.workspace }}:/app \
-          phpstan:latest \
-          vendor/bin/phpstan analyze --error-format=github /app
-      - name: Run PHPstan with ansi
-        continue-on-error: true
-        run: |
-          docker run --rm \
-          -v ${{ github.workspace }}:/app \
-          phpstan:latest \
-          vendor/bin/phpstan analyze --ansi -c /app/phpstan.dist.neon /app
+      - name: Run on dev environment
+        run: echo "Executed to development environment"
+  staging-job:
+    runs-on: ubuntu-latest
+    environment: staging
+    if: ${{ github.ref_type == 'tag' }}
+    steps:
+      - name: Run on staging environment
+        run: echo "Executed to staging environment"
