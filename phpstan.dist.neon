@@ -1,0 +1,18 @@
+parameters:
+    level: 6
+    phpVersion: 80100 # PHP 8.1
+    treatPhpDocTypesAsCertain: false
+    editorUrl: 'phpstorm://open?file=%%file%%&line=%%line%%'
+    paths:
+        # restrict to core and core addons, ignore other locally installed addons
+        - /app
+    # https://phpstan.org/config-reference#universal-object-crates
+    universalObjectCratesClasses:
+        - rex_fragment
+    ignoreErrors:
+        - '#Unsafe usage of new static\(\)\.#'
+        - '#Constructor of class rex_form_.*_element has an unused parameter \$tag.#'
+        - '#^Offset .* on .* always exists#'
+        -
+            message: '#.*deprecated.*#'
+            path: '*/update.php'
